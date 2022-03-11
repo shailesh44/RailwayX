@@ -1,0 +1,86 @@
+<html>
+<head> 
+     <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-From-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+</head>
+<style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background-color:rgb(181, 211, 148);
+      bor
+    }
+    
+    th, td {
+      padding: 30px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    
+    }
+    
+    tr:hover {background-color:gray;}
+    .hello-msg{
+        font-size: 18px;
+        color: #fff;
+        margin-right: 20px;
+    }
+    </style>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="{% url 'store' %}">RailwayX</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="https://erail.in/rajdhani-trains-list/a/60001">Trains</a>
+                    </li>
+                  </ul>
+                  <div class="form-inline my-2 my-lg-0">
+                          <a href="{% url 'login' %}"class="btn btn-warning">Login</a>
+                </div>
+                <span class="hello-msg">Hello, {{request.user}}</span>
+                <span ><a  class="hello-msg" href="{% url 'logout' %}"><i>Logout</i></a></span>
+              </nav>
+        </header>
+<table border=1>
+    <tr>
+        <th>Train ID</th>
+        <th>Train Name</th>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Arrive Time</th>
+        <th>Depart Time</th>
+        <th>Class</th>
+        <th>Days</th>
+    </tr>
+    {% for train in data %}
+        <tr>
+            <td> {{train.train_num}}</td>
+            <td>{{train.name}}</td>
+            <td>{{train.source}}</td>
+            <td>{{train.destination}}</td>
+            <td>{{train.arrivetime}}</td>
+            <td>{{train.departtime}}</td>
+            <td>{{train.classes}}</td>
+            <td>{{train.days}}</td>
+        </tr>
+    {% endfor %}
+</table>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
